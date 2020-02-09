@@ -1,0 +1,39 @@
+---
+name: Button
+route: /button
+menu: Components
+---
+
+import { Playground, Props } from 'docz'
+import Button from '../Button'
+
+# Button component
+
+### Basic usage
+
+<Playground>
+  <Button type="primary">Button Primary</Button>
+  <Button type="info">Button Info</Button>
+  <Button type="success">Button Success</Button>
+  <Button type="danger">Button Danger</Button>
+  <Button>Button Default</Button>
+</Playground>
+
+### Outline
+
+<Playground>
+  <Button type="primary" outline={true}>Button Primary</Button>
+  <Button type="info" outline={true}>Button Info</Button>
+  <Button type="success" outline={true}>Button Success</Button>
+  <Button type="danger" outline={true}>Button Danger</Button>
+  <Button outline={true}>Button Default</Button>
+</Playground>
+
+### Rounded
+
+<Playground>
+  <Button type="primary" rounded={true}>Button Primary</Button>
+</Playground>
+
+#### Button props
+<Props of={Button}/>

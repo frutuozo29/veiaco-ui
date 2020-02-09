@@ -25,21 +25,23 @@ export const Input = ({ name, label, placeholder, required, error, size, onChang
 }
 
 Input.propTypes = {
-  // property to inform name for input
+  /** 
+   * property to inform name for input 
+   * */
   name: PropTypes.string.isRequired,
-  // property to inform label for input
+  /** property to inform label for input */
   label: PropTypes.string,
-  // property to inform placeholder for input
+  /** property to inform placeholder for input */
   placeholder: PropTypes.string,
-  // property to inform whether input is required
+  /** property to inform whether input is required */
   required: PropTypes.bool,
-  // property to inform size of input
+  /** property to inform size of input */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
-  // property to inform value of input
+  /** property to inform value of input */
   value: PropTypes.any,
-  // property to inform if input is invalid
+  /** property to inform if input is invalid */
   error: PropTypes.bool,
-  // property to inform event change
+  /** property to inform event change */
   onChange: PropTypes.func,
 }
 
