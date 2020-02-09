@@ -13,6 +13,7 @@ export const Button = ({ name, type, outline, rounded, onClick, ...props }) => {
       name={name}
       typeButton={type}
       rounded={rounded}
+      outline={outline}
       onClick={onClick}
       {...props}
     />
