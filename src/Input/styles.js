@@ -27,7 +27,9 @@ export const InputStyled = styled.input`
   line-height: 1.5;
   font-size: ${props => props.fontSize};
   
+
   &:focus {
+    outline: none;
     border-color: ${props => props.error ? '#dc3545' : '#2E5BFF'};
   }
 `

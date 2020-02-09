@@ -15,5 +15,32 @@ import Input from '../Input'
   <Input name="my-input"/>
 </Playground>
 
+#### Label
+
+<Playground>
+  <Input label="Input component" name="my-input"/>  
+</Playground>
+
+#### Input with error
+
+<Playground>
+  <Input label="Input component" error={true} name="my-input"/>  
+</Playground>
+
+#### Input required
+
+<Playground>
+  <Input required={true} label="Input component" name="my-input"/>  
+</Playground>
+
+#### Size
+
+<Playground>
+  <Input size="small" placeholder="Input size small" name="my-input"/>
+  <Input size="medium" placeholder="Input size medium" name="my-input"/>
+  <Input size="large" placeholder="Input size large" name="my-input"/>
+</Playground>
+
+
 #### Input props
 <Props of={Input}/>
