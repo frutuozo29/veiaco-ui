@@ -2,25 +2,26 @@ import React, { memo } from 'react'
 
 import PropTypes from 'prop-types'
 
-import { ContentInput, Label, InputStyled } from './styles'
+import useStyles from './styles'
 
 export const Input = ({ name, label, placeholder, required, error, size, onChange, ...props }) => {
-  const padding = (size === 'medium' && '.375rem .75rem') || (size === 'large' && '.5rem 1rem') || '.25rem .5rem'
-  const fontSize = (size === 'medium' && '1rem') || (size === 'large' && '1.25rem') || '.875rem'
+  const classes = useStyles({
+    error,
+    size,
+  })
 
   return (
-    <ContentInput>
-      <Label>{label} {!!required && <span>*</span>}</Label>
-      <InputStyled
+    <div className={classes.contentInput}>
+      <label className={classes.label}>{label} {!!required && <span>*</span>}</label>
+      <input
+        name={name}
+        className={classes.input}
         placeholder={placeholder}
         aria-label={label}
         onChange={onChange}
-        error={error}
         {...props}
-        padding={padding}
-        fontSize={fontSize}
       />
-    </ContentInput>
+    </div>
   )
 }
 

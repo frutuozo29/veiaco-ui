@@ -1,60 +1,67 @@
-import styled from 'styled-components'
+import { createUseStyles } from 'react-jss'
 
 import colors from '../colors/colors.json'
 
-const OutlineButton = (outline, color) => {
+const getOutlineButton = (outline, color) => {
   if (outline) {
-    return `
-      border: 1px solid ${color};
-      background-color: #fff;
-      color: ${color};
-      
-      &:hover {
-        background-color: ${color};
-        color: #fff;
-        box-shadow: 0 0 3px 0 #FFF;
+    return ({
+      borderWidth: 1,
+      borderStyle: 'solid',
+      borderColor: color,
+      backgroundColor: '#FFF',
+      color,
+      '&:hover': {
+        backgroundColor: color,
+        color: '#FFF',
+        boxShadow: '0 0 3px 0 #FFF'
       }
-  `;
+    })
   } else {
-    return `
-    background-color: ${color};
-    color: #fff;
-  `;
+    return ({
+      backgroundColor: color,
+      color: '#FFF',
+    })
   }
 };
 
-const TypeButton = (typeButton, outline) => {
-  switch (typeButton) {
+const getStylesFromType = (type, outline) => {
+  switch (type) {
     case "primary":
-      return OutlineButton(outline, colors.primary);
+      return getOutlineButton(outline, colors.primary);
     case "danger":
-      return OutlineButton(outline, colors.danger);
+      return getOutlineButton(outline, colors.danger);
     case "info":
-      return OutlineButton(outline, colors.info);
+      return getOutlineButton(outline, colors.info);
     case "success":
-      return OutlineButton(outline, colors.success);
+      return getOutlineButton(outline, colors.success);
     default: {
-      return OutlineButton(outline, colors.default);
+      return getOutlineButton(outline, colors.default);
     }
   }
 };
 
-export const ButtonStyled = styled.button`
-  border: none;
-  padding: 10px 8px;
-  color: #FFF;
-  font-weight: 700;
-  border-radius: ${({ rounded }) => (rounded ? '30px' : '5px')};
-  outline: none;
-  cursor: pointer;
-  width: ${({ width }) => width || 'max-content'};
-  ${({ typeButton, outline }) => TypeButton(typeButton, outline)};
+export default createUseStyles({
+  button: props => {
+    const styles = getStylesFromType(props.type, props.outline)
 
-  &:hover {
-    box-shadow: 0 0 3px 0 #FFF;
+    return ({
+      border: 'none',
+      paddingTop: 10,
+      paddingBottom: 10,
+      paddingLeft: 8,
+      paddingRight: 8,
+      fontWeight: 700,
+      borderRadius: props.rounded ? 30 : 5,
+      outline: 'none',
+      cursor: 'pointer',
+      width: 'max-content',
+      '&:hover': {
+        boxShadow: '0 0 3px 0 #FFF'
+      },
+      '&:active': {
+        boxShadow: '0 0 3px 0 #FFF inset'
+      },
+      ...styles
+    })
   }
-
-  &:active {
-    box-shadow: 0 0 3px 0 #FFF inset;
-  }
-`
+})

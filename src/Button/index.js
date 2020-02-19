@@ -4,19 +4,20 @@ import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 
 // styles
-import { ButtonStyled } from './styles'
+import useStyles from './styles'
 
-export const Button = ({ name, type, outline, rounded, onClick, ...props }) => {
+export const Button = ({ name, type, outline, rounded, onClick, children, ...props }) => {
+  const classes = useStyles({ type, outline, rounded, ...props })
+
   return (
-    <ButtonStyled
-      type="button"
+    <button
       name={name}
-      typeButton={type}
-      rounded={rounded}
-      outline={outline}
+      className={classes.button}
+      type="button"
       onClick={onClick}
-      {...props}
-    />
+    >
+      {children}
+    </button>
   )
 }
 
